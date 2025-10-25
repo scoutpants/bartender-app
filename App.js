@@ -14,6 +14,16 @@ const drinkDatabase = [
   { name: "White Russian", base: "Vodka", liqueur: "Kahlúa", flavor: "Creamy", strength: "Medium", description: "Luxuriously smooth with coffee cream elegance. Vodka's clean spirit meets Kahlúa's rich coffee liqueur and heavy cream's velvety texture. Silky, dessert-like with notes of vanilla and dark roast. Indulgent and comforting.", ingredients: ["2 oz Vodka", "1 oz Kahlúa", "1 oz Heavy cream"] },
   { name: "Black Russian", base: "Vodka", liqueur: "Kahlúa", flavor: "Bitter", strength: "Strong", description: "Bold and intense with coffee spirit depth. Clean vodka foundation enhanced by Kahlúa's rich coffee liqueur complexity. Robust, full-bodied with dark roast notes and a lingering coffee finish. Strong and sophisticated.", ingredients: ["2 oz Vodka", "1 oz Kahlúa"] },
   { name: "Espresso Martini", base: "Vodka", liqueur: "Kahlúa", flavor: "Bitter", strength: "Strong", description: "Rich coffee meets premium vodka in caffeinated elegance. Fresh espresso's bold intensity balanced by Kahlúa's sweet coffee liqueur and vodka's smooth spirit. Full-bodied with a creamy foam crown and lingering coffee finish. Perfect nightcap or pick-me-up.", ingredients: ["2 oz Vodka", "1 oz Kahlúa", "1 oz Fresh espresso", "Coffee beans"] },
+  { name: "Lemon Drop", base: "Vodka", liqueur: "Triple Sec", flavor: "Sour", strength: "Medium", description: "Bright citrus perfection with a sweet sugar rim. Vodka's clean character enhanced by triple sec's orange warmth and fresh lemon's tart vibrancy. Balanced sweet-tart profile with a refreshing, citrus-forward finish. The ultimate lemon lover's cocktail.", ingredients: ["2 oz Vodka", "1 oz Triple sec", "1 oz Lemon juice", "Sugar rim", "Lemon twist"] },
+  { name: "Kamikaze", base: "Vodka", liqueur: "Triple Sec", flavor: "Sour", strength: "Strong", description: "Bold and intense with citrus power. Vodka's clean strength enhanced by triple sec's orange sweetness and lime's bright acidity. Sharp, tart profile with a clean, refreshing finish. A cocktail that packs a punch.", ingredients: ["2 oz Vodka", "1 oz Triple sec", "1 oz Lime juice"] },
+  { name: "Sea Breeze", base: "Vodka", liqueur: "None", flavor: "Refreshing", strength: "Light", description: "Oceanic refreshment with tropical fruit harmony. Vodka's clean character enhanced by cranberry's tart berry notes and grapefruit's bright citrus. Light, bubbly texture with a crisp, thirst-quenching finish. Perfect beachside companion.", ingredients: ["2 oz Vodka", "4 oz Cranberry juice", "2 oz Grapefruit juice", "Lime wedge"] },
+  { name: "Bay Breeze", base: "Vodka", liqueur: "None", flavor: "Sweet", strength: "Light", description: "Tropical paradise with sweet fruit symphony. Vodka's clean foundation enhanced by cranberry's tart berry notes and pineapple's tropical sweetness. Light, fruity with a smooth, refreshing finish. Island vibes in every sip.", ingredients: ["2 oz Vodka", "4 oz Cranberry juice", "2 oz Pineapple juice", "Pineapple wedge"] },
+  { name: "Vesper Martini", base: "Vodka", liqueur: "Dry Vermouth", flavor: "Herbal", strength: "Strong", description: "Bond's sophistication with gin and vodka's refined power. Vodka's clean strength enhanced by gin's botanical complexity and Lillet's herbal elegance. Rich, full-bodied with layers of spirit complexity and a lingering, mysterious finish. Shaken, not stirred.", ingredients: ["3 oz Vodka", "1 oz Gin", "0.5 oz Lillet Blanc", "Lemon twist"] },
+  { name: "Vodka Gimlet", base: "Vodka", liqueur: "None", flavor: "Refreshing", strength: "Medium", description: "Crisp and clean with citrus brightness. Vodka's smooth character enhanced by lime's tart vibrancy and simple syrup's gentle sweetness. Refreshing, herbaceous with a clean, citrus-forward finish. Perfect for warm evenings.", ingredients: ["2 oz Vodka", "0.75 oz Lime juice", "0.75 oz Simple syrup", "Lime wedge"] },
+  { name: "Screwdriver", base: "Vodka", liqueur: "None", flavor: "Sweet", strength: "Light", description: "Simple elegance with orange sunshine. Vodka's clean character enhanced by fresh orange juice's citrus sweetness. Light, fruity with a smooth, refreshing finish. The ultimate brunch companion.", ingredients: ["2 oz Vodka", "4 oz Orange juice", "Orange slice"] },
+  { name: "Greyhound", base: "Vodka", liqueur: "None", flavor: "Refreshing", strength: "Light", description: "Bitter-sweet refreshment with grapefruit's tart charm. Vodka's clean foundation enhanced by grapefruit's bright citrus and subtle bitterness. Light, refreshing with a crisp, thirst-quenching finish. Perfect for afternoon sipping.", ingredients: ["2 oz Vodka", "4 oz Grapefruit juice", "Lime wedge"] },
+  { name: "Chi Chi", base: "Vodka", liqueur: "None", flavor: "Creamy", strength: "Medium", description: "Tropical creaminess with pineapple paradise. Vodka's clean character enhanced by pineapple's tropical sweetness and coconut cream's velvety richness. Luxuriously smooth with a sweet, vacation-worthy finish. Hawaii's vodka dream.", ingredients: ["2 oz Vodka", "2 oz Pineapple juice", "1 oz Coconut cream", "Pineapple wedge"] },
+  { name: "Harvey Wallbanger", base: "Vodka", liqueur: "Galliano", flavor: "Herbal", strength: "Medium", description: "Herbal sophistication with Italian elegance. Vodka's clean foundation enhanced by orange juice's citrus sunshine and Galliano's anise-herbal complexity. Rich, full-bodied with layers of herbal sweetness and a lingering, contemplative finish. The ultimate Italian-American classic.", ingredients: ["2 oz Vodka", "4 oz Orange juice", "0.5 oz Galliano", "Orange slice"] },
 
   // Gin Drinks
   { name: "Gin & Tonic", base: "Gin", liqueur: "None", flavor: "Refreshing", strength: "Medium", description: "Classic botanical elegance with effervescent charm. Gin's juniper-forward notes dance with tonic's bitter quinine and lime's bright citrus. Crisp, clean mouthfeel with a refreshing, thirst-quenching finish. Timeless sophistication in its purest form.", ingredients: ["2 oz Gin", "4 oz Tonic water", "Lime wedge"] },
@@ -22,6 +32,14 @@ const drinkDatabase = [
   { name: "Gin Fizz", base: "Gin", liqueur: "None", flavor: "Fruity", strength: "Light", description: "Bright citrus meets botanical gin in effervescent harmony. Fresh lemon's tart brightness balanced by simple syrup's sweetness and gin's juniper complexity. Light, bubbly texture with a clean, refreshing finish. Classic refreshment with timeless appeal.", ingredients: ["2 oz Gin", "1 oz Lemon juice", "1 oz Simple syrup", "Club soda"] },
   { name: "Aviation", base: "Gin", liqueur: "Maraschino", flavor: "Herbal", strength: "Medium", description: "Ethereal floral elegance with sky-blue sophistication. Gin's botanical foundation enhanced by maraschino's cherry notes and crème de violette's floral whisper. Delicate, complex with a smooth, refined finish and subtle floral aftertaste. A cocktail that soars.", ingredients: ["2 oz Gin", "0.5 oz Maraschino liqueur", "0.25 oz Crème de violette", "0.25 oz Lemon juice"] },
   { name: "Tom Collins", base: "Gin", liqueur: "None", flavor: "Refreshing", strength: "Medium", description: "Tall, refreshing classic with citrus brightness. Gin's clean botanical character meets fresh lemon's tart vibrancy and simple syrup's gentle sweetness. Effervescent, thirst-quenching with a crisp, clean finish. The perfect summer companion.", ingredients: ["2 oz Gin", "1 oz Lemon juice", "0.5 oz Simple syrup", "Club soda"] },
+  { name: "Bramble", base: "Gin", liqueur: "Crème de Mûre", flavor: "Sour", strength: "Medium", description: "Dark berry elegance with gin's botanical sophistication. Gin's juniper foundation enhanced by lemon's tart brightness and crème de mûre's blackberry richness. Complex layers of sweet and sour with a lingering berry finish. London's modern classic.", ingredients: ["2 oz Gin", "1 oz Lemon juice", "0.5 oz Simple syrup", "0.5 oz Crème de mûre", "Blackberry"] },
+  { name: "Gimlet", base: "Gin", liqueur: "None", flavor: "Refreshing", strength: "Medium", description: "Classic gin sophistication with lime's tart charm. Gin's botanical character enhanced by lime's bright acidity and simple syrup's gentle sweetness. Refreshing, herbaceous with a clean, citrus-forward finish. The ultimate gin refresher.", ingredients: ["2 oz Gin", "0.75 oz Lime juice", "0.75 oz Simple syrup", "Lime wedge"] },
+  { name: "Vesper", base: "Gin", liqueur: "Dry Vermouth", flavor: "Herbal", strength: "Strong", description: "Bond's sophistication with gin and vodka's refined power. Gin's botanical complexity enhanced by vodka's clean strength and Lillet's herbal elegance. Rich, full-bodied with layers of spirit complexity and a lingering, mysterious finish. Shaken, not stirred.", ingredients: ["3 oz Gin", "1 oz Vodka", "0.5 oz Lillet Blanc", "Lemon twist"] },
+  { name: "Martinez", base: "Gin", liqueur: "Sweet Vermouth", flavor: "Herbal", strength: "Medium", description: "Pre-Prohibition elegance with gin's botanical sophistication. Gin's juniper foundation enhanced by sweet vermouth's herbal warmth and maraschino's cherry notes. Rich, complex with layers of herbal sweetness and a lingering, contemplative finish. The Manhattan's gin cousin.", ingredients: ["2 oz Gin", "1 oz Sweet vermouth", "0.25 oz Maraschino", "2 dashes Angostura bitters", "Orange peel"] },
+  { name: "Hanky Panky", base: "Gin", liqueur: "Sweet Vermouth", flavor: "Herbal", strength: "Strong", description: "Bold herbal complexity with Fernet's mysterious allure. Gin's botanical character enhanced by sweet vermouth's herbal warmth and Fernet-Branca's bitter complexity. Rich, full-bodied with layers of herbal sophistication and a lingering, contemplative finish. The ultimate herbal cocktail.", ingredients: ["1.5 oz Gin", "1.5 oz Sweet vermouth", "2 dashes Fernet-Branca", "Orange peel"] },
+  { name: "Bijou", base: "Gin", liqueur: "Sweet Vermouth", flavor: "Herbal", strength: "Strong", description: "Jewel-toned sophistication with Chartreuse's herbal mystery. Gin's botanical foundation enhanced by sweet vermouth's herbal warmth and green Chartreuse's complex herbal notes. Rich, complex with layers of herbal sophistication and a lingering, contemplative finish. A cocktail that sparkles.", ingredients: ["1 oz Gin", "1 oz Sweet vermouth", "1 oz Green Chartreuse", "2 dashes Orange bitters", "Cherry"] },
+  { name: "Singapore Sling", base: "Gin", liqueur: "Cointreau", flavor: "Sweet", strength: "Medium", description: "Tropical elegance with cherry's fruity charm. Gin's botanical foundation enhanced by cherry liqueur's sweet berry notes, Cointreau's orange warmth, and pineapple's tropical sunshine. Rich, fruity with layers of tropical complexity and a smooth, vacation-worthy finish. Singapore's liquid heritage.", ingredients: ["1.5 oz Gin", "0.5 oz Cherry liqueur", "0.25 oz Cointreau", "0.5 oz Lime juice", "4 oz Pineapple juice", "0.25 oz Grenadine", "Cherry"] },
+  { name: "Silver Fizz", base: "Gin", liqueur: "None", flavor: "Creamy", strength: "Light", description: "Luxuriously creamy with egg white's velvety texture. Gin's botanical foundation enhanced by lemon's tart brightness and egg white's silky smoothness. Light, frothy with a clean, refreshing finish and creamy crown. The ultimate gin fizz.", ingredients: ["2 oz Gin", "1 oz Lemon juice", "0.5 oz Simple syrup", "1 Egg white", "Club soda"] },
 
   // Rum Drinks
   { name: "Mojito", base: "Rum (Light)", liqueur: "None", flavor: "Refreshing", strength: "Medium", description: "Vibrant and effervescent with fresh mint and bright lime zest. Crisp rum foundation balanced by natural cane sweetness and cooling mint's herbal freshness. Refreshing herbaceous notes dance on the palate. Light, invigorating finish perfect for warm afternoons.", ingredients: ["2 oz White rum", "1 oz Lime juice", "2 tsp Sugar", "6-8 Mint leaves", "Club soda"] },
@@ -31,16 +49,50 @@ const drinkDatabase = [
   { name: "Mai Tai", base: "Rum (Light)", liqueur: "Triple Sec", flavor: "Fruity", strength: "Strong", description: "Tropical sophistication with complex rum harmony. Multiple rums' layered complexity enhanced by orange liqueur's warmth, orgeat's almond sweetness, and lime's bright acidity. Rich, full-bodied with a sweet-tart balance and lingering tropical finish. The king of tiki cocktails.", ingredients: ["1 oz White rum", "1 oz Dark rum", "0.5 oz Triple sec", "0.5 oz Orgeat syrup", "0.5 oz Lime juice", "Dark rum float"] },
   { name: "Zombie", base: "Rum (Light)", liqueur: "None", flavor: "Fruity", strength: "Strong", description: "Powerful tropical intensity with layered rum complexity. Multiple rums' combined strength meets grapefruit's tart brightness, lime's citrus vibrancy, and cinnamon's warming spice. Bold, full-bodied with a complex, lingering finish. Proceed with caution - this one bites back.", ingredients: ["1 oz White rum", "1 oz Dark rum", "1 oz Overproof rum", "0.5 oz Lime juice", "0.5 oz Grapefruit juice", "0.5 oz Cinnamon syrup"] },
   { name: "Cuba Libre", base: "Rum (Light)", liqueur: "None", flavor: "Refreshing", strength: "Medium", description: "Simple elegance with refreshing cola harmony. Rum's warm tropical character meets cola's sweet caramel notes and lime's bright citrus accent. Smooth, easy-drinking with a clean, refreshing finish. Classic simplicity at its finest.", ingredients: ["2 oz White rum", "4 oz Cola", "Lime wedge"] },
+  { name: "Between the Sheets", base: "Rum (Light)", liqueur: "Cointreau", flavor: "Sour", strength: "Strong", description: "Sophisticated complexity with cognac's refined elegance. Light rum's tropical character enhanced by cognac's oak complexity and Cointreau's orange warmth. Rich, full-bodied with layers of spirit sophistication and a lingering, contemplative finish. The ultimate rum-cognac harmony.", ingredients: ["1 oz White rum", "1 oz Cognac", "1 oz Cointreau", "0.5 oz Lemon juice"] },
+  { name: "Hemingway Daiquiri", base: "Rum (Light)", liqueur: "Maraschino", flavor: "Refreshing", strength: "Medium", description: "Literary elegance with grapefruit's tart sophistication. Light rum's tropical character enhanced by grapefruit's bitter-sweet notes, lime's bright acidity, and maraschino's cherry complexity. Clean, crisp with a refreshing, citrus-forward finish. Papa's perfect cocktail.", ingredients: ["2 oz White rum", "0.75 oz Grapefruit juice", "0.5 oz Lime juice", "0.25 oz Maraschino"] },
+  { name: "El Presidente", base: "Rum (Light)", liqueur: "Curaçao", flavor: "Herbal", strength: "Medium", description: "Presidential sophistication with vermouth's herbal elegance. Light rum's tropical character enhanced by dry vermouth's herbal complexity, Curaçao's orange warmth, and grenadine's sweet berry notes. Rich, complex with layers of herbal sweetness and a smooth, refined finish. Cuba's presidential cocktail.", ingredients: ["2 oz White rum", "0.75 oz Dry vermouth", "0.5 oz Curaçao", "0.25 oz Grenadine", "Orange peel"] },
+  { name: "Bacardi Cocktail", base: "Rum (Light)", liqueur: "None", flavor: "Sweet", strength: "Medium", description: "Classic Cuban elegance with grenadine's sweet charm. Light rum's tropical character enhanced by lime's tart brightness and grenadine's pomegranate sweetness. Balanced sweet-tart profile with a smooth, refreshing finish. The original rum sour.", ingredients: ["2 oz White rum", "1 oz Lime juice", "0.5 oz Grenadine", "0.5 oz Simple syrup", "Lime wedge"] },
+  { name: "Mary Pickford", base: "Rum (Light)", liqueur: "Maraschino", flavor: "Sweet", strength: "Light", description: "Hollywood glamour with pineapple's tropical charm. Light rum's tropical character enhanced by pineapple's sweet sunshine, grenadine's berry notes, and maraschino's cherry complexity. Light, fruity with a smooth, vacation-worthy finish. Silent film star's signature cocktail.", ingredients: ["2 oz White rum", "1 oz Pineapple juice", "0.25 oz Grenadine", "0.25 oz Maraschino", "Cherry"] },
+  { name: "Jungle Bird", base: "Rum (Dark)", liqueur: "Campari", flavor: "Bitter", strength: "Medium", description: "Tropical bitterness with Campari's sophisticated allure. Dark rum's rich molasses character enhanced by Campari's bitter orange intensity, pineapple's tropical sweetness, and lime's bright acidity. Complex layers of bitter-sweet harmony with a lingering, contemplative finish. Malaysia's exotic bird.", ingredients: ["1.5 oz Dark rum", "0.75 oz Campari", "1.5 oz Pineapple juice", "0.5 oz Lime juice", "Pineapple wedge"] },
+  { name: "Ti' Punch", base: "Rum (Dark)", liqueur: "None", flavor: "Sour", strength: "Strong", description: "Caribbean tradition with rhum agricole's rustic elegance. Rhum agricole's sugarcane character enhanced by lime's tart brightness and cane syrup's natural sweetness. Rustic, refreshing with a clean, citrus-forward finish. Martinique's spirited gift.", ingredients: ["2 oz Rhum agricole", "0.5 Lime (quartered)", "1 tsp Cane syrup"] },
+  { name: "Painkiller", base: "Rum (Dark)", liqueur: "None", flavor: "Creamy", strength: "Medium", description: "Tropical paradise with coconut cream's luxurious embrace. Dark rum's rich molasses character enhanced by pineapple's tropical sunshine, orange's citrus brightness, and coconut cream's velvety richness. Luxuriously smooth with a sweet, vacation-worthy finish. The British Virgin Islands' liquid therapy.", ingredients: ["2 oz Dark rum", "4 oz Pineapple juice", "1 oz Orange juice", "1 oz Coconut cream", "Nutmeg", "Pineapple wedge"] },
+  { name: "Rum Runner", base: "Rum (Dark)", liqueur: "Blackberry Liqueur", flavor: "Sweet", strength: "Medium", description: "Tropical fruit symphony with blackberry's dark allure. Dark rum's rich molasses character enhanced by blackberry liqueur's berry richness, banana liqueur's tropical sweetness, and citrus brightness. Rich, fruity with layers of tropical complexity and a smooth, island-worthy finish. The ultimate tropical escape.", ingredients: ["1 oz Dark rum", "0.5 oz Blackberry liqueur", "0.5 oz Banana liqueur", "1 oz Orange juice", "1 oz Pineapple juice", "0.5 oz Lime juice", "Cherry"] },
+  { name: "Hot Buttered Rum", base: "Rum (Dark)", liqueur: "None", flavor: "Spicy", strength: "Medium", description: "Winter warmth with butter's luxurious embrace. Dark rum's rich molasses character enhanced by butter's creamy richness, brown sugar's caramel sweetness, and warming spices. Luxuriously smooth with notes of vanilla, cinnamon, and nutmeg. The ultimate winter warmer.", ingredients: ["2 oz Dark rum", "1 tbsp Butter", "1 tbsp Brown sugar", "6 oz Hot water", "Cinnamon", "Nutmeg"] },
+  { name: "Navy Grog", base: "Rum (Light)", liqueur: "None", flavor: "Sour", strength: "Strong", description: "Naval strength with citrus power. Multiple rums' combined strength enhanced by lime's tart brightness, grapefruit's bitter-sweet notes, and honey's natural sweetness. Bold, full-bodied with a complex, lingering finish. Admiral's choice for rough seas.", ingredients: ["1 oz White rum", "1 oz Dark rum", "1 oz Overproof rum", "0.5 oz Lime juice", "0.5 oz Grapefruit juice", "0.5 oz Honey syrup"] },
+  { name: "Scorpion Bowl", base: "Rum (Light)", liqueur: "None", flavor: "Sweet", strength: "Strong", description: "Tiki power with brandy's sophisticated strength. Multiple rums' combined strength enhanced by brandy's oak complexity, orgeat's almond sweetness, and citrus brightness. Rich, full-bodied with layers of tropical complexity and a lingering, stormy finish. The ultimate tiki punch.", ingredients: ["1 oz White rum", "1 oz Dark rum", "0.5 oz Brandy", "1 oz Orange juice", "1 oz Lemon juice", "0.5 oz Orgeat syrup", "Pineapple wedge"] },
+  { name: "Rum Swizzle", base: "Rum (Light)", liqueur: "None", flavor: "Refreshing", strength: "Medium", description: "Caribbean refreshment with pineapple's tropical charm. Light rum's tropical character enhanced by lime's tart brightness, pineapple's sweet sunshine, and bitters' herbal complexity. Refreshing, herbaceous with a clean, citrus-forward finish. Bermuda's cooling classic.", ingredients: ["2 oz White rum", "0.75 oz Lime juice", "0.75 oz Pineapple juice", "0.5 oz Simple syrup", "2 dashes Angostura bitters", "Pineapple wedge"] },
+  { name: "Cable Car", base: "Rum (Light)", liqueur: "Orange Curaçao", flavor: "Spicy", strength: "Medium", description: "San Francisco sophistication with spiced rum's warming embrace. Spiced rum's cinnamon-clove character enhanced by orange curaçao's citrus warmth and lemon's tart brightness. Complex layers of spice and citrus with a smooth, warming finish. The City by the Bay's signature cocktail.", ingredients: ["2 oz Spiced rum", "0.5 oz Orange curaçao", "0.75 oz Lemon juice", "0.5 oz Simple syrup", "Cinnamon", "Orange peel"] },
 
   // Tequila Drinks
   { name: "Margarita", base: "Tequila (Blanco)", liqueur: "Cointreau", flavor: "Sour", strength: "Medium", description: "Bright agave spirit meets tart lime in perfect harmony. Smooth tequila character enhanced by orange liqueur, creating layers of citrus complexity. Balanced sweet-tart profile with a crisp, clean finish and subtle salt accent. Mexico's gift to the world.", ingredients: ["2 oz Tequila", "1 oz Lime juice", "1 oz Cointreau", "Salt rim"] },
   { name: "Spicy Margarita", base: "Tequila (Blanco)", liqueur: "Cointreau", flavor: "Spicy", strength: "Medium", description: "Bold and fiery with jalapeño's warming embrace. Tequila's agave character enhanced by lime's tart brightness and jalapeño's spicy heat. Complex layers of sweet, sour, and spice with a lingering, warming finish. For those who like it hot.", ingredients: ["2 oz Tequila", "1 oz Lime juice", "1 oz Cointreau", "2-3 Jalapeño slices", "Salt rim"] },
   { name: "Paloma", base: "Tequila (Blanco)", liqueur: "None", flavor: "Refreshing", strength: "Light", description: "Effervescent grapefruit meets smooth tequila in refreshing harmony. Agave spirit's clean character enhanced by grapefruit's tart sweetness and lime's bright citrus notes. Light, bubbly texture with a crisp, thirst-quenching finish. Mexico's lighter, brighter classic.", ingredients: ["2 oz Tequila", "4 oz Grapefruit soda", "0.5 oz Lime juice", "Salt rim"] },
   { name: "Tequila Sunrise", base: "Tequila (Blanco)", liqueur: "None", flavor: "Fruity", strength: "Medium", description: "Sunset in a glass with layered tropical beauty. Smooth tequila meets sweet orange juice's citrus sunshine and grenadine's ruby sunset glow. Sweet, fruity profile with a smooth, tropical finish. A visual and flavorful masterpiece.", ingredients: ["2 oz Tequila", "4 oz Orange juice", "0.5 oz Grenadine"] },
+  { name: "Batanga", base: "Tequila (Blanco)", liqueur: "None", flavor: "Sweet", strength: "Light", description: "Mexican simplicity with cola's familiar comfort. Blanco tequila's clean agave character enhanced by Coca-Cola's sweet caramel notes and lime's bright citrus accent. Smooth, easy-drinking with a clean, refreshing finish. Mexico's answer to Cuba Libre.", ingredients: ["2 oz Tequila", "4 oz Coca-Cola", "0.5 oz Lime juice", "Lime wedge"] },
+  { name: "Tequila Collins", base: "Tequila (Blanco)", liqueur: "None", flavor: "Refreshing", strength: "Light", description: "Tall, refreshing classic with agave brightness. Blanco tequila's clean character enhanced by lemon's tart vibrancy and simple syrup's gentle sweetness. Effervescent, thirst-quenching with a crisp, clean finish. The perfect summer agave companion.", ingredients: ["2 oz Tequila", "1 oz Lemon juice", "0.5 oz Simple syrup", "Club soda", "Lemon wedge"] },
+  { name: "Cantarito", base: "Tequila (Blanco)", liqueur: "None", flavor: "Refreshing", strength: "Light", description: "Mexican citrus symphony with grapefruit soda's effervescent charm. Blanco tequila's clean agave character enhanced by citrus juices' bright vibrancy and grapefruit soda's tart sweetness. Light, bubbly texture with a crisp, thirst-quenching finish. Jalisco's refreshing classic.", ingredients: ["2 oz Tequila", "0.5 oz Lime juice", "0.5 oz Lemon juice", "0.5 oz Orange juice", "3 oz Grapefruit soda", "Salt rim"] },
+  { name: "Tommy's Margarita", base: "Tequila (Blanco)", liqueur: "None", flavor: "Refreshing", strength: "Medium", description: "Pure agave elegance with agave nectar's natural sweetness. Blanco tequila's clean character enhanced by lime's tart brightness and agave nectar's natural sweetness. Clean, crisp with a refreshing, citrus-forward finish. San Francisco's agave-forward classic.", ingredients: ["2 oz Tequila", "1 oz Lime juice", "0.5 oz Agave nectar", "Salt rim"] },
+  { name: "Ranch Water", base: "Tequila (Blanco)", liqueur: "None", flavor: "Refreshing", strength: "Light", description: "West Texas simplicity with mineral water's crisp refreshment. Blanco tequila's clean agave character enhanced by lime's tart brightness and Topo Chico's effervescent crispness. Light, refreshing with a clean, thirst-quenching finish. Texas ranch hand's perfect companion.", ingredients: ["2 oz Tequila", "0.5 oz Lime juice", "Topo Chico", "Lime wedge"] },
+  { name: "Añejo Old Fashioned", base: "Tequila (Reposado)", liqueur: "None", flavor: "Sweet", strength: "Strong", description: "Mexican sophistication with agave's natural sweetness. Reposado tequila's oak complexity enhanced by agave nectar's natural sweetness and bitters' herbal spice. Rich, complex with layers of oak and agave, finished with bitters' herbal complexity. Mexico's gift to the Old Fashioned.", ingredients: ["2 oz Reposado tequila", "0.25 oz Agave nectar", "2 dashes Angostura bitters", "Orange peel"] },
+  { name: "Rosita", base: "Tequila (Reposado)", liqueur: "Campari", flavor: "Herbal", strength: "Medium", description: "Mexican Negroni with reposado's oak sophistication. Reposado tequila's oak complexity enhanced by Campari's bitter orange intensity and vermouth's herbal warmth. Rich, complex with layers of bitter-sweet harmony and a lingering, contemplative finish. Mexico's bitter aperitif.", ingredients: ["1.5 oz Reposado tequila", "0.75 oz Campari", "0.75 oz Sweet vermouth", "0.75 oz Dry vermouth", "Orange peel"] },
+  { name: "Oaxacan Old Fashioned", base: "Tequila (Reposado)", liqueur: "None", flavor: "Smoky", strength: "Strong", description: "Smoky sophistication with agave's ancient wisdom. Reposado tequila's oak complexity enhanced by mezcal's distinctive smoke character and agave nectar's natural sweetness. Rich, complex with layers of smoke and oak, finished with bitters' herbal complexity. Oaxaca's gift to the Old Fashioned.", ingredients: ["1.5 oz Reposado tequila", "0.5 oz Mezcal", "0.25 oz Agave nectar", "2 dashes Angostura bitters", "Orange peel"] },
+  { name: "Tequila Manhattan", base: "Tequila (Añejo)", liqueur: "Sweet Vermouth", flavor: "Herbal", strength: "Strong", description: "Mexican elegance with Manhattan sophistication. Añejo tequila's oak complexity enhanced by sweet vermouth's herbal warmth and aromatic bitters' spice. Rich, full-bodied with layers of oak and sweetness. Mexico's gift to Manhattan culture.", ingredients: ["2 oz Añejo tequila", "1 oz Sweet vermouth", "2 dashes Angostura bitters", "Cherry"] },
+  { name: "Añejo Sour", base: "Tequila (Añejo)", liqueur: "None", flavor: "Creamy", strength: "Medium", description: "Mexican sophistication with egg white's creamy elegance. Añejo tequila's oak complexity enhanced by lemon's tart brightness and egg white's velvety texture. Smooth, well-rounded with a frothy crown and lingering oak finish. Mexico's refined sour.", ingredients: ["2 oz Añejo tequila", "1 oz Lemon juice", "0.5 oz Simple syrup", "1 Egg white", "Angostura bitters"] },
+  { name: "Tequila Old Fashioned", base: "Tequila (Añejo)", liqueur: "None", flavor: "Sweet", strength: "Strong", description: "Mexican refinement with agave's natural sweetness. Añejo tequila's oak complexity enhanced by agave nectar's natural sweetness and bitters' herbal spice. Rich, complex with layers of oak and agave, finished with bitters' herbal complexity. Mexico's sophisticated classic.", ingredients: ["2 oz Añejo tequila", "0.25 oz Agave nectar", "2 dashes Angostura bitters", "Orange peel"] },
+  { name: "Blood & Sand Variation", base: "Tequila (Añejo)", liqueur: "Sweet Vermouth", flavor: "Herbal", strength: "Medium", description: "Mexican twist on Scottish classic with blood orange's tart sophistication. Añejo tequila's oak complexity enhanced by blood orange's tart sweetness, sweet vermouth's herbal warmth, and cherry liqueur's berry notes. Rich, complex with layers of fruit and oak, finished with herbal complexity. Mexico's blood orange classic.", ingredients: ["1 oz Añejo tequila", "1 oz Blood orange juice", "0.75 oz Sweet vermouth", "0.75 oz Cherry liqueur", "Orange peel"] },
+
+  // Mezcal Drinks
   { name: "Mezcal Mule", base: "Mezcal", liqueur: "None", flavor: "Smoky", strength: "Medium", description: "Smoky sophistication with ginger's fiery embrace. Mezcal's distinctive smoky character meets spicy ginger beer's warming intensity and lime's bright citrus contrast. Complex layers of smoke and spice with a lingering, contemplative finish. For the adventurous spirit.", ingredients: ["2 oz Mezcal", "4 oz Ginger beer", "0.5 oz Lime juice", "Lime wedge"] },
+  { name: "Naked & Famous", base: "Mezcal", liqueur: "Chartreuse", flavor: "Herbal", strength: "Strong", description: "Modern sophistication with equal parts herbal complexity. Mezcal's distinctive smoke character enhanced by Aperol's bitter orange notes, Chartreuse's herbal mystery, and lime's bright acidity. Complex layers of smoke, citrus, and herbs with a smooth, contemplative finish. The cocktail that bridges worlds.", ingredients: ["0.75 oz Mezcal", "0.75 oz Aperol", "0.75 oz Chartreuse", "0.75 oz Lime juice"] },
+  { name: "Mezcal Paloma", base: "Mezcal", liqueur: "None", flavor: "Refreshing", strength: "Light", description: "Smoky refreshment with grapefruit's tart charm. Mezcal's distinctive smoky character enhanced by grapefruit's bright citrus and lime's tart vibrancy. Light, bubbly texture with a crisp, thirst-quenching finish and smoky undertones. Mexico's smoky grapefruit classic.", ingredients: ["2 oz Mezcal", "4 oz Grapefruit soda", "0.5 oz Lime juice", "Salt rim"] },
+  { name: "Mezcal Margarita", base: "Mezcal", liqueur: "Cointreau", flavor: "Sour", strength: "Medium", description: "Smoky sophistication with lime's tart elegance. Mezcal's distinctive smoke character enhanced by Cointreau's orange warmth and lime's bright acidity. Complex layers of smoke and citrus with a smooth, refined finish. Mexico's smoky margarita.", ingredients: ["2 oz Mezcal", "1 oz Lime juice", "1 oz Cointreau", "Salt rim"] },
+  { name: "Last of the Oaxacans", base: "Mezcal", liqueur: "Chartreuse", flavor: "Herbal", strength: "Strong", description: "Oaxacan sophistication with Chartreuse's herbal mystery. Mezcal's distinctive smoke character enhanced by green Chartreuse's complex herbal notes, lime's bright acidity, and maraschino's cherry complexity. Rich, complex with layers of smoke and herbal sophistication. Oaxaca's herbal masterpiece.", ingredients: ["0.75 oz Mezcal", "0.75 oz Green Chartreuse", "0.75 oz Lime juice", "0.75 oz Maraschino"] },
+  { name: "Smoky Martini", base: "Mezcal", liqueur: "Dry Vermouth", flavor: "Herbal", strength: "Strong", description: "Smoky elegance with vermouth's herbal sophistication. Mezcal's distinctive smoke character enhanced by dry vermouth's herbal complexity and orange bitters' spice. Rich, complex with layers of smoke and herbs with a lingering, contemplative finish. The ultimate smoky martini.", ingredients: ["2 oz Mezcal", "0.5 oz Dry vermouth", "2 dashes Orange bitters", "Orange peel"] },
+  { name: "Mezcal Negroni", base: "Mezcal", liqueur: "Campari", flavor: "Bitter", strength: "Strong", description: "Smoky sophistication with Negroni's bitter elegance. Mezcal's distinctive smoke character enhanced by Campari's bitter orange intensity and sweet vermouth's herbal warmth. Rich, full-bodied with layers of smoke and bitter-sweet harmony. Mexico's smoky Negroni.", ingredients: ["1 oz Mezcal", "1 oz Campari", "1 oz Sweet vermouth", "Orange peel"] },
+  { name: "Single Village Fix", base: "Mezcal", liqueur: "None", flavor: "Refreshing", strength: "Medium", description: "Oaxacan refreshment with pineapple's tropical charm. Mezcal's distinctive smoke character enhanced by pineapple's sweet sunshine, lime's tart brightness, and cucumber's cooling freshness. Refreshing, herbaceous with a clean, citrus-forward finish and smoky undertones. Oaxaca's cooling classic.", ingredients: ["2 oz Mezcal", "0.75 oz Pineapple juice", "0.75 oz Lime juice", "0.5 oz Simple syrup", "Cucumber slices"] },
 
   // Whiskey/Bourbon Drinks
-  { name: "Old Fashioned", base: "Bourbon", liqueur: "None", flavor: "Bitter", strength: "Strong", description: "Rich amber spirit kissed with aromatic bitters and a whisper of sweetness. Bold whiskey character mellowed by muddled sugar, revealing notes of caramel, vanilla, and oak. Robust yet refined with a warming, contemplative finish. The grandfather of cocktails.", ingredients: ["2 oz Bourbon", "1 Sugar cube", "2 dashes Angostura bitters", "Orange peel"] },
   { name: "Whiskey Sour", base: "Whiskey", liqueur: "None", flavor: "Sour", strength: "Medium", description: "Perfect sour balance with whiskey's warm embrace. Bourbon's rich character enhanced by fresh lemon's tart brightness and simple syrup's gentle sweetness. Smooth, well-rounded with a clean, citrus-forward finish. Classic American elegance.", ingredients: ["2 oz Bourbon", "1 oz Lemon juice", "0.5 oz Simple syrup", "Cherry"] },
   { name: "Manhattan", base: "Whiskey", liqueur: "Sweet Vermouth", flavor: "Bitter", strength: "Strong", description: "Sophisticated elegance with whiskey's refined character. Bourbon's warm depth enhanced by sweet vermouth's herbal complexity and aromatic bitters' spice. Rich, full-bodied with layers of sweet and bitter harmony. New York's gift to cocktail culture.", ingredients: ["2 oz Bourbon", "1 oz Sweet vermouth", "2 dashes Angostura bitters", "Cherry"] },
   { name: "Mint Julep", base: "Bourbon", liqueur: "None", flavor: "Refreshing", strength: "Strong", description: "Kentucky elegance with cooling mint sophistication. Bourbon's rich warmth enhanced by fresh mint's herbal freshness and sugar's gentle sweetness. Refreshing herbaceous notes with a smooth, contemplative finish. The Derby's crown jewel.", ingredients: ["2 oz Bourbon", "2 tsp Sugar", "6-8 Mint leaves", "Crushed ice"] },
@@ -100,6 +152,7 @@ const drinkDatabase = [
 
 export default function App() {
   const [currentScreen, setCurrentScreen] = useState('welcome');
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({
     base: null,
     liqueur: null,
@@ -306,7 +359,9 @@ export default function App() {
       
       if (currentQuestionIndex < updatedQuestions.length - 1) {
         // Move to next question
-        setCurrentScreen(`question_${currentQuestionIndex + 2}`);
+        const nextQuestionIndex = currentQuestionIndex + 1;
+        setCurrentQuestionIndex(nextQuestionIndex);
+        setCurrentScreen(`question_${nextQuestionIndex + 1}`);
       } else {
         // All questions answered, show recommendations
         setCurrentScreen('recommendations');
@@ -316,7 +371,28 @@ export default function App() {
 
   const startOver = () => {
     setCurrentScreen('welcome');
+    setCurrentQuestionIndex(0);
     setAnswers({ base: null, liqueur: null, flavor: null, strength: null });
+  };
+
+  const handleBack = () => {
+    const dynamicQuestions = getDynamicQuestions();
+    
+    if (currentScreen === 'recommendations') {
+      // From recommendations, go back to the last question
+      const lastQuestionIndex = dynamicQuestions.length - 1;
+      setCurrentQuestionIndex(lastQuestionIndex);
+      setCurrentScreen(`question_${lastQuestionIndex + 1}`);
+    } else if (currentQuestionIndex > 0) {
+      // Go back to previous question
+      const previousQuestionIndex = currentQuestionIndex - 1;
+      setCurrentQuestionIndex(previousQuestionIndex);
+      setCurrentScreen(`question_${previousQuestionIndex + 1}`);
+    } else {
+      // If we're at the first question, go back to welcome
+      setCurrentScreen('welcome');
+      setCurrentQuestionIndex(0);
+    }
   };
 
   const renderWelcomeScreen = () => (
@@ -353,6 +429,14 @@ export default function App() {
             </TouchableOpacity>
           ))}
         </ScrollView>
+        
+        {/* Back button - only show if not on first question */}
+        {questionIndex > 0 && (
+          <TouchableOpacity style={styles.backButton} onPress={handleBack}>
+            <Text style={styles.backButtonText}>← Back</Text>
+          </TouchableOpacity>
+        )}
+        
         <TouchableOpacity style={styles.secondaryButton} onPress={startOver}>
           <Text style={styles.secondaryButtonText}>Start Over</Text>
         </TouchableOpacity>
@@ -436,6 +520,12 @@ export default function App() {
             </View>
           )}
         </ScrollView>
+        
+        {/* Back button - go back to last question */}
+        <TouchableOpacity style={styles.backButton} onPress={handleBack}>
+          <Text style={styles.backButtonText}>← Back</Text>
+        </TouchableOpacity>
+        
         <TouchableOpacity style={styles.primaryButton} onPress={startOver}>
           <Text style={styles.buttonText}>Start Over</Text>
         </TouchableOpacity>
@@ -462,6 +552,11 @@ export default function App() {
       case 'recommendations':
         return renderRecommendations();
       default:
+        // Handle dynamic question screens
+        if (currentScreen.startsWith('question_')) {
+          const questionNum = parseInt(currentScreen.split('_')[1]) - 1;
+          return renderQuestion(questionNum);
+        }
         return renderWelcomeScreen();
     }
   };
@@ -536,6 +631,22 @@ const styles = StyleSheet.create({
   },
   secondaryButtonText: {
     color: '#666666',
+    fontSize: 16,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  backButton: {
+    backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderColor: '#ff6b35',
+    paddingHorizontal: 30,
+    paddingVertical: 12,
+    borderRadius: 8,
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  backButtonText: {
+    color: '#ff6b35',
     fontSize: 16,
     fontWeight: '600',
     textAlign: 'center',
