@@ -151,63 +151,47 @@ const drinkDatabase = [
 ];
 
 export default function App() {
-  const [currentScreen, setCurrentScreen] = useState('welcome');
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [currentStep, setCurrentStep] = useState(0); // 0 = welcome, 1-3 = questions, 4 = results
   const [answers, setAnswers] = useState({
     base: null,
-    liqueur: null,
     flavor: null,
     strength: null
   });
 
-  // Helper function to filter drinks based on current selections
-  const getFilteredDrinks = (baseFilter, liqueurFilter, flavorFilter, strengthFilter) => {
+  // Helper function to filter drinks based on current selections (ignore liqueur)
+  const getFilteredDrinks = (baseFilter, flavorFilter, strengthFilter) => {
     return drinkDatabase.filter(drink => {
       const baseMatch = !baseFilter || drink.base === baseFilter;
-      const liqueurMatch = !liqueurFilter || drink.liqueur === liqueurFilter;
       const flavorMatch = !flavorFilter || drink.flavor === flavorFilter;
       const strengthMatch = !strengthFilter || drink.strength === strengthFilter;
       
-      return baseMatch && liqueurMatch && flavorMatch && strengthMatch;
+      return baseMatch && flavorMatch && strengthMatch;
     });
   };
 
-  // Get available liqueurs for a selected base spirit
-  const getAvailableLiqueurs = (selectedBase) => {
+  // Get available flavors for selected base spirit (cascading filter)
+  const getAvailableFlavors = (selectedBase) => {
     if (!selectedBase) return [];
     
-    const drinksWithBase = getFilteredDrinks(selectedBase, null, null, null);
-    let liqueurs = [...new Set(drinksWithBase.map(drink => drink.liqueur))];
+    // Filter drinks to only those matching the selected base spirit
+    const drinksWithBase = drinkDatabase.filter(drink => drink.base === selectedBase);
     
-    // Add spirit-specific liqueurs
-    if (selectedBase === 'Gin') {
-      liqueurs.push('Chartreuse', 'Maraschino');
-    } else if (selectedBase === 'Scotch') {
-      liqueurs.push('Drambuie');
-    } else if (selectedBase === 'Distilled Wine (Brandy/Cognac/Armagnac)') {
-      liqueurs.push('Crème de Cacao', 'Frangelico');
-    } else if (selectedBase === 'Champagne/Prosecco') {
-      liqueurs.push('St. Germain');
-    } else if (selectedBase === 'Rum (Light)' || selectedBase === 'Rum (Dark)') {
-      liqueurs.push('Blue Curaçao');
-    }
-    
-    // Remove duplicates and sort
-    liqueurs = [...new Set(liqueurs)];
-    return liqueurs.sort();
-  };
-
-  // Get available flavor profiles for current selections
-  const getAvailableFlavors = (selectedBase, selectedLiqueur) => {
-    const drinks = getFilteredDrinks(selectedBase, selectedLiqueur, null, null);
-    const flavors = [...new Set(drinks.map(drink => drink.flavor))];
+    // Get unique flavor profiles from those drinks
+    const flavors = [...new Set(drinksWithBase.map(drink => drink.flavor))];
     return flavors.sort();
   };
 
-  // Get available strength levels for current selections
-  const getAvailableStrengths = (selectedBase, selectedLiqueur, selectedFlavor) => {
-    const drinks = getFilteredDrinks(selectedBase, selectedLiqueur, selectedFlavor, null);
-    const strengths = [...new Set(drinks.map(drink => drink.strength))];
+  // Get available strengths for selected base + flavor (cascading filter)
+  const getAvailableStrengths = (selectedBase, selectedFlavor) => {
+    if (!selectedBase || !selectedFlavor) return [];
+    
+    // Filter drinks to only those matching base spirit + flavor profile
+    const drinksMatching = drinkDatabase.filter(drink => 
+      drink.base === selectedBase && drink.flavor === selectedFlavor
+    );
+    
+    // Get unique strength levels from those drinks
+    const strengths = [...new Set(drinksMatching.map(drink => drink.strength))];
     return strengths.sort();
   };
 
@@ -263,135 +247,65 @@ export default function App() {
     return sippingSpirits.includes(selection);
   };
 
-  // Dynamic questions based on current selections
-  const getDynamicQuestions = () => {
-    const questions = [];
-
-    // First question: Base spirit or Liqueur
-    if (!answers.base && !answers.liqueur) {
-      questions.push({
-        id: 'base',
-        question: "What's your base spirit or liqueur?",
-        options: [...allBaseSpirits, ...allLiqueurs.filter(l => l !== 'None')]
-      });
-    }
-
-    // Second question: If base spirit was selected, show available liqueurs
-    if (answers.base && answers.base !== 'None/Other' && !answers.liqueur) {
-      const availableLiqueurs = getAvailableLiqueurs(answers.base);
-      if (availableLiqueurs.length > 0) {
-        questions.push({
-          id: 'liqueur',
-          question: "Any specific liqueur?",
-          options: availableLiqueurs
-        });
-      }
-    }
-
-    // If liqueur was selected first, show available base spirits for that liqueur
-    if (answers.liqueur && answers.liqueur !== 'None' && !answers.base) {
-      const drinksWithLiqueur = getFilteredDrinks(null, answers.liqueur, null, null);
-      const availableSpirits = [...new Set(drinksWithLiqueur.map(drink => drink.base))];
-      if (availableSpirits.length > 0) {
-        questions.push({
-          id: 'base',
-          question: "What's your base spirit?",
-          options: availableSpirits.filter(spirit => spirit !== 'None')
-        });
-      }
-    }
-
-    // Add flavor question with available flavors for current selections
-    const availableFlavors = getAvailableFlavors(answers.base, answers.liqueur);
-    if (availableFlavors.length > 0 && !answers.flavor) {
-      questions.push({
-        id: 'flavor',
-        question: "What flavor profile?",
-        options: availableFlavors
-      });
-    }
-
-    // Add strength question with available strengths for current selections
-    const availableStrengths = getAvailableStrengths(answers.base, answers.liqueur, answers.flavor);
-    if (availableStrengths.length > 0 && !answers.strength) {
-      questions.push({
-        id: 'strength',
-        question: "How strong?",
-        options: availableStrengths
-      });
-    }
-
-    return questions;
-  };
-
   const getRecommendations = () => {
-    // With cascading filtering, we should always have matching drinks
-    return getFilteredDrinks(answers.base, answers.liqueur, answers.flavor, answers.strength);
+    // Filter based on base, flavor, and strength only (ignore liqueur)
+    return getFilteredDrinks(answers.base, answers.flavor, answers.strength);
   };
 
-  const handleAnswer = (questionId, answer) => {
-    // Determine if this is a base spirit or liqueur selection
-    let newAnswers = { ...answers };
+  // Simple step-based answer handling
+  const handleAnswer = (answer) => {
+    const newAnswers = { ...answers };
     
-    if (questionId === 'base') {
-      // Check if the answer is a liqueur
-      if (allLiqueurs.includes(answer)) {
-        newAnswers.liqueur = answer;
-      } else {
-        newAnswers.base = answer;
+    if (currentStep === 1) {
+      // Step 1: Base spirit
+      newAnswers.base = answer;
+      if (isSippingSpirit(answer)) {
+        setAnswers(newAnswers);
+        setCurrentStep(5); // Special sipping spirit screen
+        return;
       }
-    } else {
-      newAnswers[questionId] = answer;
+      setAnswers(newAnswers);
+      setCurrentStep(2); // Go to flavor
+    } else if (currentStep === 2) {
+      // Step 2: Flavor profile
+      newAnswers.flavor = answer;
+      setAnswers(newAnswers);
+      setCurrentStep(3); // Go to strength
+    } else if (currentStep === 3) {
+      // Step 3: Strength
+      newAnswers.strength = answer;
+      setAnswers(newAnswers);
+      setCurrentStep(4); // Go to results
     }
-    
-    setAnswers(newAnswers);
-    
-    // Check if this is a sipping spirit (including the restored spirits)
-    if (questionId === 'base' && !allLiqueurs.includes(answer) && isSippingSpirit(answer)) {
-      setCurrentScreen('sipping_spirit');
-      return;
-    }
-    
-    // Get updated questions after this answer
-    setTimeout(() => {
-      const updatedQuestions = getDynamicQuestions();
-      const currentQuestionIndex = updatedQuestions.findIndex(q => q.id === questionId);
-      
-      if (currentQuestionIndex < updatedQuestions.length - 1) {
-        // Move to next question
-        const nextQuestionIndex = currentQuestionIndex + 1;
-        setCurrentQuestionIndex(nextQuestionIndex);
-        setCurrentScreen(`question_${nextQuestionIndex + 1}`);
-      } else {
-        // All questions answered, show recommendations
-        setCurrentScreen('recommendations');
-      }
-    }, 0);
   };
 
   const startOver = () => {
-    setCurrentScreen('welcome');
-    setCurrentQuestionIndex(0);
-    setAnswers({ base: null, liqueur: null, flavor: null, strength: null });
+    setCurrentStep(0);
+    setAnswers({ base: null, flavor: null, strength: null });
   };
 
   const handleBack = () => {
-    const dynamicQuestions = getDynamicQuestions();
+    // Simple: just decrease step by 1, clear that answer
+    const newAnswers = { ...answers };
     
-    if (currentScreen === 'recommendations') {
-      // From recommendations, go back to the last question
-      const lastQuestionIndex = dynamicQuestions.length - 1;
-      setCurrentQuestionIndex(lastQuestionIndex);
-      setCurrentScreen(`question_${lastQuestionIndex + 1}`);
-    } else if (currentQuestionIndex > 0) {
-      // Go back to previous question
-      const previousQuestionIndex = currentQuestionIndex - 1;
-      setCurrentQuestionIndex(previousQuestionIndex);
-      setCurrentScreen(`question_${previousQuestionIndex + 1}`);
-    } else {
-      // If we're at the first question, go back to welcome
-      setCurrentScreen('welcome');
-      setCurrentQuestionIndex(0);
+    if (currentStep === 4) {
+      // Results → Step 3 (strength)
+      newAnswers.strength = null;
+      setAnswers(newAnswers);
+      setCurrentStep(3);
+    } else if (currentStep === 3) {
+      // Step 3 (strength) → Step 2 (flavor)
+      newAnswers.flavor = null;
+      setAnswers(newAnswers);
+      setCurrentStep(2);
+    } else if (currentStep === 2) {
+      // Step 2 (flavor) → Step 1 (base)
+      newAnswers.base = null;
+      setAnswers(newAnswers);
+      setCurrentStep(1);
+    } else if (currentStep === 1) {
+      // Step 1 (base) → Welcome
+      startOver();
     }
   };
 
@@ -399,50 +313,40 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.title}>Bartender's Helper</Text>
       <Text style={styles.subtitle}>Find the perfect drink for your taste</Text>
-      <TouchableOpacity style={styles.primaryButton} onPress={() => setCurrentScreen('question_1')}>
+      <TouchableOpacity style={styles.primaryButton} onPress={() => setCurrentStep(1)}>
         <Text style={styles.buttonText}>Find a Drink</Text>
       </TouchableOpacity>
     </View>
   );
 
-  const renderQuestion = (questionIndex) => {
-    const dynamicQuestions = getDynamicQuestions();
-    const question = dynamicQuestions[questionIndex];
-    
-    if (!question) {
-      // If no more questions, go to recommendations
-      setCurrentScreen('recommendations');
-      return null;
-    }
-    
-    return (
-      <View style={styles.container}>
-        <Text style={styles.questionTitle}>{question.question}</Text>
-        <ScrollView style={styles.optionsContainer}>
-          {question.options.map((option, index) => (
-            <TouchableOpacity
-              key={index}
-              style={styles.optionButton}
-              onPress={() => handleAnswer(question.id, option)}
-            >
-              <Text style={styles.optionText}>{option}</Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
-        
-        {/* Back button - only show if not on first question */}
-        {questionIndex > 0 && (
-          <TouchableOpacity style={styles.backButton} onPress={handleBack}>
-            <Text style={styles.backButtonText}>← Back</Text>
+  // Simple step-based question rendering
+  const renderQuestion = (step, options, questionText) => (
+    <View style={styles.container}>
+      <Text style={styles.questionTitle}>{questionText}</Text>
+      <ScrollView style={styles.optionsContainer}>
+        {options.map((option, index) => (
+          <TouchableOpacity
+            key={index}
+            style={styles.optionButton}
+            onPress={() => handleAnswer(option)}
+          >
+            <Text style={styles.optionText}>{option}</Text>
           </TouchableOpacity>
-        )}
-        
-        <TouchableOpacity style={styles.secondaryButton} onPress={startOver}>
-          <Text style={styles.secondaryButtonText}>Start Over</Text>
+        ))}
+      </ScrollView>
+      
+      {/* Back button - show on steps 2, 3, 4, 5 (not step 1) */}
+      {step > 1 && (
+        <TouchableOpacity style={styles.backButton} onPress={handleBack}>
+          <Text style={styles.backButtonText}>← Back</Text>
         </TouchableOpacity>
-      </View>
-    );
-  };
+      )}
+      
+      <TouchableOpacity style={styles.secondaryButton} onPress={startOver}>
+        <Text style={styles.secondaryButtonText}>Start Over</Text>
+      </TouchableOpacity>
+    </View>
+  );
 
   const renderSippingSpirit = () => {
     const selectedSpirit = answers.base || answers.liqueur;
@@ -515,7 +419,7 @@ export default function App() {
               })()}
               
               <Text style={styles.selectionSummary}>
-                Your selections: {answers.base} + {answers.liqueur} + {answers.flavor} + {answers.strength}
+                Your selections: {answers.base} + {answers.flavor} + {answers.strength}
               </Text>
             </View>
           )}
@@ -534,29 +438,22 @@ export default function App() {
   };
 
   const renderCurrentScreen = () => {
-    switch (currentScreen) {
-      case 'welcome':
+    switch (currentStep) {
+      case 0:
         return renderWelcomeScreen();
-      case 'question_1':
-        return renderQuestion(0);
-      case 'question_2':
-        return renderQuestion(1);
-      case 'question_3':
-        return renderQuestion(2);
-      case 'question_4':
-        return renderQuestion(3);
-      case 'question_5':
-        return renderQuestion(4);
-      case 'sipping_spirit':
-        return renderSippingSpirit();
-      case 'recommendations':
+      case 1:
+        return renderQuestion(1, allBaseSpirits, "What's your base spirit?");
+      case 2:
+        // Show only flavor profiles available for the selected base spirit
+        return renderQuestion(2, getAvailableFlavors(answers.base), "What flavor profile?");
+      case 3:
+        // Show only strength levels available for the selected base + flavor
+        return renderQuestion(3, getAvailableStrengths(answers.base, answers.flavor), "How strong?");
+      case 4:
         return renderRecommendations();
+      case 5:
+        return renderSippingSpirit();
       default:
-        // Handle dynamic question screens
-        if (currentScreen.startsWith('question_')) {
-          const questionNum = parseInt(currentScreen.split('_')[1]) - 1;
-          return renderQuestion(questionNum);
-        }
         return renderWelcomeScreen();
     }
   };
